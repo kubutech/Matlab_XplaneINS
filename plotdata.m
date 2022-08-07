@@ -6,7 +6,7 @@ lonGPS = coordinates(6,:);
 lonINS = coordinates(3,:);
 time = coordinates(1,:);
 
-plot(time, lonGPS, time, lonINS);
+plot(time, elevGPS, time, elevINS);
 legend("GPS", "INS");
 
 hold on;
