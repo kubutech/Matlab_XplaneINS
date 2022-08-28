@@ -6,13 +6,14 @@ lonGPS = coordinates(6,:);
 lonINS = coordinates(3,:);
 time = coordinates(1,:);
 
-plot(time, elevGPS, time, elevINS);
+figure();
+plot(time, elevINS, time, elevGPS);
 legend("GPS", "INS");
 
-hold on;
+figure();
 
 worldmap 'world';
-[latlim,lonlim] = geoquadline(latGPS,lonGPS);
+[latlim,lonlim] = geoquadline(latINS,lonINS);
 buf = 10;
 [latlim,lonlim] = bufgeoquad(latlim,lonlim,buf,buf);
 ax = worldmap(latlim,lonlim);

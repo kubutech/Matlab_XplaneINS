@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define BUF_SIZE 64
+#define BUF_SIZE 28
 HANDLE GPS_Mapping;
 LPCTSTR GPS_Buf;
 TCHAR GPS_Name[] = TEXT("GPS");

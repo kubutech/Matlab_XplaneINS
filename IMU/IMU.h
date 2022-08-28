@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define BUF_SIZE 64
+#define BUF_SIZE 28
 HANDLE IMU_Mapping;
 LPCTSTR IMU_Buf;
 TCHAR IMU_Name[] = TEXT("IMU");

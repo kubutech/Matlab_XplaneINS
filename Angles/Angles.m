@@ -1,5 +1,5 @@
-classdef Angles_real < matlab.System & coder.ExternalDependency
-        % Angles_real- this block sends its inputs to active X-Plane simulation using shared memory. Note: in order for this block to work, special X-Plane plugin needs to be installed
+classdef Angles < matlab.System & coder.ExternalDependency
+        % Angles- this block sends its inputs to active X-Plane simulation using shared memory. Note: in order for this block to work, special X-Plane plugin needs to be installed
     
         properties(Access = public)
         
@@ -15,16 +15,16 @@ classdef Angles_real < matlab.System & coder.ExternalDependency
     
         methods(Access = protected)
             function setupImpl(obj)
-                    coder.cinclude('Angles_real.h');
-                    coder.ceval('setup_Angles_real');
+                    coder.cinclude('Angles.h');
+                    coder.ceval('setup_Angles');
             end
     
             function [pitch,true_heading,roll] = stepImpl(obj)
                 pitch = single(0);
                 true_heading = single(0);
                 roll = single(0);
-                coder.cinclude('Angles_real.h');
-                coder.ceval('update_Angles_real');
+                coder.cinclude('Angles.h');
+                coder.ceval('update_Angles');
                 pitch = coder.ceval('get_pitch');
                 true_heading = coder.ceval('get_true_heading');
                 roll = coder.ceval('get_roll');
@@ -35,14 +35,14 @@ classdef Angles_real < matlab.System & coder.ExternalDependency
             end
             
             function releaseImpl(obj)
-                coder.cinclude('Angles_real.h');
-                coder.ceval('close_Angles_real');
+                coder.cinclude('Angles.h');
+                coder.ceval('close_Angles');
             end
         end
             
         methods (Static)
             function name = getDescriptiveName()
-                name = 'Angles_real';
+                name = 'Angles';
             end
             function b = isSupportedContext(context)
                 b = context.isCodeGenTarget('rtw');
@@ -51,9 +51,9 @@ classdef Angles_real < matlab.System & coder.ExternalDependency
             % Update the build-time buildInfo
                 blockRoot = fileparts(mfilename('fullpath'));
                 buildInfo.addIncludePaths({blockRoot});
-                buildInfo.addIncludeFiles({'Angles_real.h'});
+                buildInfo.addIncludeFiles({'Angles.h'});
                 buildInfo.addSourcePaths({blockRoot});
-                buildInfo.addSourceFiles({'Angles_real.c'});
+                buildInfo.addSourceFiles({'Angles.c'});
             end
         end
     end
