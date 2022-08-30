@@ -19,21 +19,21 @@ classdef IMU < matlab.System & coder.ExternalDependency
                     coder.ceval('setup_IMU');
             end
     
-            function [p,q,r,axial_acceleration,normal_acceleration,side_acceleration] = stepImpl(obj)
+            function [p,q,r,ax,ay,az] = stepImpl(obj)
                 p = single(0);
                 q = single(0);
                 r = single(0);
-                axial_acceleration = single(0);
-                normal_acceleration = single(0);
-                side_acceleration = single(0);
+                ax = single(0);
+                ay = single(0);
+                az = single(0);
                 coder.cinclude('IMU.h');
                 coder.ceval('update_IMU');
                 p = coder.ceval('get_p');
                 q = coder.ceval('get_q');
                 r = coder.ceval('get_r');
-                axial_acceleration = coder.ceval('get_axial_acceleration');
-                normal_acceleration = coder.ceval('get_normal_acceleration');
-                side_acceleration = coder.ceval('get_side_acceleration');
+                ax = coder.ceval('get_ax');
+                ay = coder.ceval('get_ay');
+                az = coder.ceval('get_az');
             end
     
             function resetImpl(obj)

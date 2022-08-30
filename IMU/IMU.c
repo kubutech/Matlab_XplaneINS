@@ -54,28 +54,28 @@ float get_r()
     }
 }
 
-float get_axial_acceleration()
+float get_ax()
 {
     if (IMU_isMapped) {
-        return IMU_struct.axial_acceleration;
+        return IMU_struct.ax;
     } else {
         return 0;
     }
 }
 
-float get_normal_acceleration()
+float get_ay()
 {
     if (IMU_isMapped) {
-        return IMU_struct.normal_acceleration;
+        return IMU_struct.ay;
     } else {
         return 0;
     }
 }
 
-float get_side_acceleration()
+float get_az()
 {
     if (IMU_isMapped) {
-        return IMU_struct.side_acceleration;
+        return IMU_struct.az;
     } else {
         return 0;
     }

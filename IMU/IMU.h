@@ -14,9 +14,9 @@ struct {
     float p;
     float q;
     float r;
-    float axial_acceleration;
-    float normal_acceleration;
-    float side_acceleration;
+    float ax;
+    float ay;
+    float az;
     int active;
 }IMU_struct;
 
@@ -27,8 +27,8 @@ void update_IMU();
 float get_p();
 float get_q();
 float get_r();
-float get_axial_acceleration();
-float get_normal_acceleration();
-float get_side_acceleration();
+float get_ax();
+float get_ay();
+float get_az();
 
 void close_IMU();
